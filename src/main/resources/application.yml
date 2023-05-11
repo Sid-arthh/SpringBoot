@@ -54,4 +54,22 @@ logging:
   file: boot_example.log
   org.hibernate: INFO
 
+---
+spring:
+  profiles: mysql
+
+  datasource:
+      driverClassName: com.mysql.jdbc.Driver
+      url: jdbc:mysql://${DB_ENDPOINT}:${DB_PORT}/${DB_NAME}?useSSL=false
+      username: ${DB_USERNAME}
+      password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      dialect: org.hibernate.dialect.MySQLInnoDBDialect
+      ddl-auto: update # todo: in non-dev environments, comment this out:
+
+
+hotel.service:
+  name: 'test profile:'
+  
  
